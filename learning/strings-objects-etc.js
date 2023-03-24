@@ -55,29 +55,48 @@ console.log(firstStr);
 //Conditionas
 
     //if, else, else if
-let userName = prompt("Login:", "");
+function myLogon() {
+    let userName = prompt("Login:", "");
 
-if (userName == "Admin") {
-    let password = prompt("Password:", "");
-    if (password == 1) {
-        alert("Welcome");
+    if (userName == "Admin") {
+        let password = prompt("Password:", "");
+        if (password == "1") {
+            alert("Welcome");
+        }
+        else if (password == null || password == ""){
+            alert("Canceled");
+        }
+        else {
+            alert("Wrong password");
+        }
     }
-    else if (password == null || password == ""){
+    else if (userName == null || userName == "") {
         alert("Canceled");
     }
-    else {
-        alert("Wrong password");
-    }
+    else
+        alert("EROOR: Invalid input");
 }
-else if (userName == null || userName == "") {
-    alert("Canceled");
-}
-else
-    alert("EROOR: Invalid input");
-
 //Logical operators
     // || OR  also stop when first frue value is reached:
         // true||aler("not printed")
     // && AND
     // ! NOT
     // !! - NOTNOT converts value to boolean type
+
+
+//Switch
+    function mySwitch() {
+        let day = prompt("What day?", "");
+
+        switch (day) {
+            case "1":
+                console.log("Monday's -Galf");
+                break;
+            case "2":
+                console.log("Work, work makes the dog bork...");
+                break;
+            default:
+                console.log("YAY it aint Monday!");
+                break;
+        }
+    }
