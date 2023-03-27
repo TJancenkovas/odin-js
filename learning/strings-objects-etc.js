@@ -3,10 +3,10 @@
 let firstStr = "test";
 console.log(firstStr);
 
-//Concatinating strings
+//Concatenating strings
     //String literal
 
-    let testStr = "This is an automated - ${firstStr}";
+    let testStr = `This is an automated - ${firstStr}`;
     console.log(testStr);
 
     //Concatenation using +
@@ -30,7 +30,7 @@ console.log(firstStr);
 
     // .slice(start, end) - extracts part of string and returns it in a new string (First pos 0) (negative values count from end)
     // .substring(start, end) - ^^^ (Negative values = 0)
-    //.substr(start, lenght) - SE
+    // .substr(start, lenght) - SE
 
     //.replace("Word to find", "Word to replace with") - Replaces the first match! Does not chabge the string only returns a new one
         //Regular expressions can be used here fx:
