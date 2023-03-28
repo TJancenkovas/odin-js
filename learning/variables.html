@@ -8,8 +8,55 @@
 </head>
 <body>
     <script type = "text/javascript" src="strings-objects-etc.js"></script>
+    <script type = "text/javascript" src="functions.js"></script>
     
     <button onclick="myLogon()"> Login </button>
     <button onclick="mySwitch()"> Day'er </button>
+
+    <script> console.log(findMin(20, 21));
+    console.log(findMin(200, 300));
+    findMin(1,1);
+
+    console.log(findPow(3,5))
+
+    ask(
+        "Do you agree?",
+        () => alert("You agreed."),
+        () => alert("You canceled the execution.")
+        );
+        
+    let number = parseInt(prompt("Number?"));
+    
+    add7 = (number) => number+7;
+    console.log(add7(number));
+
+    multiply = (a, b) => a*b;
+    console.log(multiply(number,3));
+
+    function captalize(str) {
+
+        function getFirst(str) {
+            return str.slice(0,1)
+        }
+        
+        function removeFirst(str) {
+            return str.substr(1,str.length);
+        }
+
+        return getFirst(str).toUpperCase() + removeFirst(str)
+
+    }
+    console.log(captalize("hello HOSH!"));
+    console.log(captalize("Yello GnOsh?"));
+
+    function lastLetter(str) {
+        return str.substr(str.length-1,1);
+    }
+    console.log(lastLetter("abcsd"));
+
+
+    </script>
+
+
 </body>
 </html>

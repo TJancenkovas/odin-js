@@ -1,0 +1,33 @@
+Whe approaching a new program ask yourself this:
+
+    Does your program have a user interface? What will it look like? What functionality will the interface have? Sketch this out on paper.
+    What inputs will your program have? Will the user enter data or will you get input from somewhere else?
+    What’s the desired output?
+    Given your inputs, what are the steps necessary to return the desired output?
+
+
+Thinking like a programmer:
+    Base concepts:
+    When creating algoriths:
+
+        Creating Variables:
+            -name
+            -initial value
+            -type
+
+        Outputting:
+            -message
+
+        Inputting:
+            -variable
+            -message
+
+        While loop:
+            -sentry
+            -start
+            -stop
+            -change
+
+When solveing complex problems - USE PSEUDOCODE AS COMMENTS!
+
+        
