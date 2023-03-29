@@ -32,10 +32,13 @@ function alertRPSUser(outcome, generatedRPS) {
     switch(outcome) {
         case `tie`: 
             alert(`It's a tie! Opponent chose ${generatedRPS}`);
+        break;
         case `win`:
             alert(`Congratulations you won! Opponent chose ${generatedRPS}`);
+        break;
         case `lose`:
             alert(`Sorry you lost! Opponent chose ${generatedRPS}`);
+        break;
     }
 }
 
