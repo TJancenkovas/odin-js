@@ -55,20 +55,19 @@ function getOutcome(userInput,generatedRPS) {
             case 0: 
             //If generated == 1 loose (return lose)
             //Else win (return win)
-                return generatedRPS = 1 ? `lose`: `win`; 
+                return generatedRPS === 1 ? `lose`: `win`; 
   
-
         ///Case user chooses 1
             case 1:
             //If generated == 2 loose (retunr lose)
             //Else win (return win)
-                return generatedRPS = 2 ? `lose` : `win`;
+                return generatedRPS === 2 ? `lose` : `win`;
 
         //Case user chooses 2
             case 2:
             //If generated == 0 (return lose)
             //Else win (retunr lose)
-                return generatedRPS = 0 ? `lose` : `win`;
+                return generatedRPS === 0 ? `lose` : `win`;
         }
     }
 
