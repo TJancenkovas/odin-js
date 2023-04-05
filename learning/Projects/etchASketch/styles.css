@@ -1,0 +1,14 @@
+.grid-container {
+    display: flex;
+}
+
+.grid-container-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-element {
+    color: aliceblue;
+    border:1px solid grey;
+    padding: 20px;
+}
