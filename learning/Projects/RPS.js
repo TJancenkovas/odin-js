@@ -1,21 +1,65 @@
-function game(userInput) {
-    console.log("Game start:");
-    //Make sure we get an int
-    userInput = parseInt(userInput);
 
-    //Create score into to keep the score
-    let score = 0;
+const buttons = document.querySelectorAll('button');
+buttons.forEach( (button) => {
+    button.addEventListener('click', () =>{
+    playRPSToFive(button.textContent);
+    })
+})
 
-    //Play for 5 times
-    for (let i = 0; i < 5; i++) {
-        score += playRPS(userInput)
+
+
+
+
+
+function playRPSToFive (userInput) {
+//Get score value from html
+let userScore = Number(document.getElementById("user-score").textContent);
+let opponentScore = Number(document.getElementById("opponent-score").textContent);
+console.log(`US: ${userScore}    OS: ${opponentScore}`);
+
+//Check if userScore < 5 or opponentScore < 5
+if(userScore < 5 && opponentScore < 5) {
+    //If yes playRPS with user input
+    let outcome = playRPS(userInput);
+    //Evaluete outcome and ammend the scores
+    switch (outcome) {
+        //User win case
+        case 1: 
+            userScore++;
+            document.querySelector("#user-score").textContent = `${userScore}`;
+            break;
+        //User loose case
+        case -1:
+            opponentScore++;
+            document.querySelector("#opponent-score").textContent = `${opponentScore}`;
+            break;
+        //Tie case
+        case 0:
+            break;
     }
-    console.log("Game end.");
-    //Return the result of the game
-    return alertRPSUser(score);
+}  //Else alert the user about outcome and set the score to zero
+if (userScore === 5) {
+    alert(`CONGRATULATIONS YOU ARE THE WINNER!`);
+    resetScore();
 }
+else if (opponentScore === 5) {
+    alert('FAILURE!');
+    resetScore();
+}
+};
+       
+function resetScore() {
+    document.querySelector("#user-score").textContent = "0";
+    document.querySelector("#opponent-score").textContent = "0"
+};
+
 
 function playRPS(userInput) {
+
+    //Check if the input is in a string and get the corresponding selection number for the input
+    if (typeof(userInput) ===  `string`) {
+        userInput = getRPSChoice(userInput);
+    }
 
     //Generate RPS choice (0 - rock, 1 - paper, 2 - scissors)
     let generatedRPS = getRPS();
@@ -59,15 +103,40 @@ function alertRPSUser(score) {
 function logRPSUser(outcome, generatedRPS) {
         //Determine generatedRPS in string form
     generatedRPS = getRPSString(generatedRPS);
+
+    const resultsDiv = document.querySelector('#results')
+
     switch(outcome) {
         case 0: 
-            return console.log(`Tie. Opponent chose ${generatedRPS}`);
+            resultsDiv.style.color = 'yellow';
+            resultsDiv.textContent = `Tie. Opponent chose ${generatedRPS}`;
+            break;
         case 1:
-            return console.log(`Win. Opponent chose ${generatedRPS}`);
+            resultsDiv.style.color = `green`;
+            resultsDiv.textContent = `Win. Opponent chose ${generatedRPS}`;
+            break;
         case -1:
-            return console.log(`Lose. Opponent chose ${generatedRPS}`);
+            resultsDiv.style.color = 'red';
+            resultsDiv.textContent = `Lose. Opponent chose ${generatedRPS}`;
+            break;
     }
 }
+
+function getRPSChoice(textInput) {
+    //returns the number to use in the playRPS function, when given text
+    switch (textInput.toLowerCase()){
+        case `rock`:
+            return 0;
+        case `paper`:
+            return 1;
+        case 'scissors':
+            return 2;
+        default:
+            console.error('Invalid RPS input');
+            break;
+    }
+};
+
 
 function getOutcome(userInput,generatedRPS) {
     //Finds the outcome of the game 

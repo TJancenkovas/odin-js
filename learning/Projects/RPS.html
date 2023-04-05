@@ -9,27 +9,57 @@
     <style>
         .flex-container {
             display: flex;
-            position: absolute;
-            top: 50%;
-            left: 50%;
+            justify-content: center;
         }
         .flex-container > div > button {
             font-size: 20px;
             padding: 10px;
         }
+        .vertical-flex-container {
+            display: flex;
+            flex-direction: column;
+            margin: 5px;
+        }
+        #results {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            font-size: 25px;
+        }
+        .score-container {
+            display: flex;
+            justify-content: center;
+        }
+        #user-score, #opponent-score {
+            font-size: 50px;
+            text-align: center;
+        }
+
     </style>
 
    <!-- Link to RPS.js-->
-   <script type = "text/javascript" src = "RPS.js"> </script>
+   <script type = "text/javascript" src = "RPS.js" defer> </script>
 
 </head>
 <body>
 
    <!-- Add buttons for each rps action-->
     <div class="flex-container">
-        <div> <button onclick="game(0)">Rock</button> </div>
-        <div> <button onclick="game(1)">Paper</button> </div>
-        <div> <button onclick="game(2)">Scissors</button> </div>
+        <div> <button>Rock</button> </div>
+        <div> <button>Paper</button> </div>
+        <div> <button>Scissors</button> </div>
+    </div>
+    <div id="results">  </div>
+    <div class="score-container">
+        <div class="vertical-flex-container">
+            <div> User Score</div>
+            <div id="user-score"> 0</div>
+        </div>
+        <div class="vertical-flex-container">
+            <div> Opponent Score</div>
+            <div #
+            id="opponent-score"> 0 </div>
+        </div>
     </div>
    
 </body>
