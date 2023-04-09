@@ -1,6 +1,13 @@
+
+
+
 //Creating the 16x16 grid using a for  loop
 function createGrid(x,y) {
     //Createsa  div grid of x by y
+    //Get grid conainer div
+    let gridContainer = document.querySelector('.grid-container');
+    //Clear grid container 
+    gridContainer.innerHTML = '';
     for (let i = 0; i < x; i++) {
         let divContainer = document.createElement(`div`);
         divContainer.classList.add(`grid-container-vertical`);
@@ -8,10 +15,28 @@ function createGrid(x,y) {
         for (let j = 0; j < y; j++) {
                 let div = document.createElement(`div`);
                 div.classList.add(`grid-element`);
+
+                div.addEventListener('mouseover' , changeColor)
+
                 divContainer.appendChild(div);
+
+                
         }
-    //Append created div grid to the container grid
-    document.querySelector('.grid-container').appendChild(divContainer);
+
+
+    gridContainer.appendChild(divContainer);
+
     }
 }
+
+
+function changeColor(e) {
+    e.target.style.backgroundColor = 'black';
+}
+
+function popupGridSize() {
+    let size = prompt(`Size of grid:`);
+    createGrid(size,size);
+}
+    
     

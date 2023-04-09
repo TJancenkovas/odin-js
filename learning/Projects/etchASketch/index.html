@@ -9,7 +9,13 @@
     <script src="scripts.js" defer></script>
 </head>
 <body onload="createGrid(16,16);">
-    <div class="grid-container"></div>
+    <div class="flex-container-vertical">
+        <div>
+            <button id = "grid-size" onclick="popupGridSize()"> Grid size </button>
+        </div>
+    
+        <div class="grid-container"></div>
+    </div>
 
 </body>
 </html>
