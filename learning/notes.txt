@@ -28,6 +28,11 @@ Thinking like a programmer:
             -stop
             -change
 
-When solveing complex problems - USE PSEUDOCODE AS COMMENTS!
+When solving complex problems - USE PSEUDOCODE AS COMMENTS!
 
+
+The DOM (Document object model)
         
+    The  DOM is a tree like representation of the contents of a webpage - a tree of "nodes", with different relationships depending on
+    how they are  arranged in the HTML document.
+

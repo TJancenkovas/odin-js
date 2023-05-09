@@ -31,7 +31,7 @@ function createGrid(x,y) {
 
 
 function changeColor(e) {
-    e.target.style.backgroundColor = 'black';
+    e.target.style.backgroundColor = getRandColor();
 }
 
 function popupGridSize() {
@@ -39,4 +39,8 @@ function popupGridSize() {
     createGrid(size,size);
 }
     
+function getRandColor() {
+    var colorHex = '#'+(0x1000000+Math.random()*0xffffff).toString(16).substr(1,6);
+    return colorHex;
+}
     
