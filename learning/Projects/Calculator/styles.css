@@ -17,6 +17,9 @@ body {
   
   .display {
     margin-bottom: 10px;
+    width: auto;
+    height: 40px;
+    background-color: white;
   }
   
   .display input {
