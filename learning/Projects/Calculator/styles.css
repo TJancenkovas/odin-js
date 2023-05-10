@@ -20,6 +20,8 @@ body {
     width: auto;
     height: 40px;
     background-color: white;
+    font-size: 30px;
+    text-align: center;
   }
   
   .display input {
