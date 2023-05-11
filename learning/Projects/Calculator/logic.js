@@ -9,6 +9,10 @@
 
 const buttons = document.querySelectorAll(`button`);
 const input = document.querySelector(`.display`);
+
+const operators = /[-+/*]/;
+
+let boolOperationFinished = false;
 let number1 = "";
 let number2 = "";
 let operation = "";
@@ -16,15 +20,20 @@ let operation = "";
 buttons.forEach(function(button) {
     button.addEventListener(`click`, function(operator) {
         let value = operator.target.textContent;
-        let equation = input.textContent;
         
 
         //If it's equals we give result
         if(value == `=`) {
-            number1 = getResult();
+                if(operation == "") {
+                    //do nothing
+                }
+                else {
+                    number1 = getResult();
+                }
+            
         }
         else {
-        passValue(value, equation);
+        passValue(value);
         }
         input.textContent = number1 + operation + number2;
         console.log(operation);
@@ -45,36 +54,54 @@ const getResult = function() {
             result = Number(number1) * Number(number2);
             break;
         case `/`:
+            //Divide by zero check
+            if (number2 == "0") {
+                result = "Cool it buster!";
+                break;
+            }
             result = Number(number1) / Number(number2);
             break;                        
     }
 
     number2 = "";
     operation = "";
+    //Deal with floats overflowing
+    if(result % 1 != 0 && typeof(result) == `number`) 
+        {
+            result = parseFloat(result.toPrecision(9));
+        }
+    boolOperationFinished = true;
     return String(result);
 }
 
-const passValue = function(value, equation) {
+const passValue = function(value) {
     //Check if number or operator
-    if (isNaN(value)) {
+    if (value.match(operators)) {
+        boolOperationFinished = false;
         //Make sure only one operator is available at a time
         if(number2 != "") {
             number1 = getResult();
-            return 0;
         }
-        else {
-            operation = value;
-            return 0;
-        }
+        operation = value;
+        return 0;
     }
     else 
     {
-            //Check to see if it's second or first number
-        if(operation == "") {
-            number1 += value;
+        //Override number if after operation
+        if(boolOperationFinished) {
+            number1 = value;
+            boolOperationFinished = false;
+        }
+        //Check to see if it's second or first number
+        else if(operation == "") {
+            //Prevent leading zeroes
+            if(number1 == "") number1 = value;
+            else number1 += value;
         }
         else {
-            number2 += value;
+            //Prevent leading zeroes
+            if(number2 == "") number2 = value;
+            else number2 += value;
         }
         return 0;
 }
