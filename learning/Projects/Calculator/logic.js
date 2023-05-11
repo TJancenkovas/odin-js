@@ -1,16 +1,9 @@
-// const buttonAdd = document.querySelector(`#add`);
-// const buttonSubtract = document.querySelector(`#subtract`);
-// const buttonMultiply = document.querySelector(`#multiply`);
-// const buttonDivide = document.querySelector(`#divide`);
-// const buttonEquals = document.querySelector(`#equals`);
-// const buttonDot = document.querySelector(`#dot`)
-// const buttonNumbers = document.querySelectorAll('button');
-
 
 const buttons = document.querySelectorAll(`button`);
 const input = document.querySelector(`.display`);
 
-const operators = /[-+/*]/;
+const OPERATORS = /^[-+/*]/; //Available operators in the calculator
+const MAXLENGTH = 9; //Maximum length of numbers
 
 let boolOperationFinished = false;
 let number1 = "";
@@ -35,7 +28,11 @@ buttons.forEach(function(button) {
         else {
         passValue(value);
         }
-        input.textContent = number1 + operation + number2;
+        //Calculate length of string
+        let length = number1.length + number2.length + operation.length;
+        //Don't display first number if numbers too long
+        if(length < MAXLENGTH + 3) input.textContent = number1 + operation + number2;
+        else input.textContent = operation + number2;
         console.log(operation);
         return 0;
     })
@@ -76,13 +73,20 @@ const getResult = function() {
 
 const passValue = function(value) {
     //Check if number or operator
-    if (value.match(operators)) {
+    if (value.match(OPERATORS)) {
+        if(number1 == "") {
+            return 0;
+        }
         boolOperationFinished = false;
         //Make sure only one operator is available at a time
         if(number2 != "") {
             number1 = getResult();
         }
         operation = value;
+        return 0;
+    }
+    else if(value == "A/C") {
+        clearAll();
         return 0;
     }
     else 
@@ -96,15 +100,25 @@ const passValue = function(value) {
         else if(operation == "") {
             //Prevent leading zeroes
             if(number1 == "") number1 = value;
+            //Block entry if number too long
+            else if(String(number1).length > MAXLENGTH) return 0;
             else number1 += value;
         }
         else {
             //Prevent leading zeroes
             if(number2 == "") number2 = value;
+            //Block entry if number too long
+            else if(String(number2).length > MAXLENGTH) return 0;
             else number2 += value;
         }
         return 0;
 }
+}
 
+const clearAll = function() {
+    number1 = "";
+    number2 = "";
+    operation = "";
+    boolOperationFinished = false;
 }
 

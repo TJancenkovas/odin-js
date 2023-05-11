@@ -37,6 +37,7 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 5px;
+    padding-top: 5px;
   }
   
   button {
@@ -58,6 +59,11 @@ body {
     background-color: orange;
     color: white;
   }
+
+  button.action {
+    background-color: lightcoral;
+
+  }
   
   button:hover {
     background-color: #3e8e41;
@@ -70,5 +76,10 @@ body {
   
   button.operation:hover {
     background-color: #001F3F;
+  }
+
+  button.action:hover {
+    background-color: lightpink;
+    color: black;
   }
   
